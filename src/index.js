@@ -171,15 +171,37 @@ const imageSlider = (height, width, ...images) => {
     return slider;
   };
 
-  const auto = (ms) => {
+  /**
+   * Creates an interval to automatically advance the image in the slider.
+   *
+   * @param {number} [ms=1000] - The number of milliseconds between each image update.
+   * @returns {number} An interval ID that can be used with clearInterval to stop the automatic image updates.
+   */
+  const auto = (ms = 1000) => {
     return setInterval(_moveForward, ms);
   };
 
+  /**
+   * Appends the image slider to the specified parent element using its selector.
+   *
+   * @param {string} selectors - The CSS selector of the parent element where the image slider will be appended.
+   */
   const append = (selectors) => {
     const parent = document.querySelector(selectors);
     parent.appendChild(_init());
   };
 
+  /**
+   * Updates the slider configuration with the specified new settings.
+   *
+   * @param {Object} updatedConfig - The updated configurations for the slider.
+   * @param {boolean} updatedConfig.animation - Whether to enable animation.
+   * @param {number} updatedConfig.animationDuration - The duration of the animation in milliseconds.
+   * @param {"cover" | "none" | "fill" | "contain"} updatedConfig.imageFit - The image fit mode.
+   * @param {boolean} updatedConfig.showCounter - Whether to display the image counter.
+   * @param {boolean} updatedConfig.showControls - Whether to display navigation controls.
+   * @param {boolean} updatedConfig.showDots - Whether to display navigation dots.
+   */
   const updateConfig = (updatedConfig) => {
     Object.assign(_configurations, updatedConfig);
   };
@@ -195,5 +217,5 @@ const slider = imageSlider(
   "https://i.ytimg.com/vi/E0Lj4kwLBbk/sddefault.jpg"
 );
 // slider.auto(2000);
-slider.updateConfig({ showControls: false, imageFit: "contain" });
+slider.updateConfig({ showCounter: true, imageFit: "fill" });
 slider.append("#root");
