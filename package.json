@@ -1,7 +1,7 @@
 {
-  "name": "image-slider",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@lindelwa122/image-slider",
+  "version": "0.0.1",
+  "description": "A small JS library for creating image carousels.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,8 @@
     "start": "webpack serve --open",
     "prepare": "husky install"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Lindelwa",
+  "license": "MIT",
   "devDependencies": {
     "css-loader": "^6.8.1",
     "eslint": "^8.51.0",
@@ -31,5 +31,17 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindelwa122/image-slider.git"
+  },
+  "keywords": [
+    "dropdown",
+    "menu"
+  ],
+  "bugs": {
+    "url": "https://github.com/lindelwa122/image-slider/issues"
+  },
+  "homepage": "https://github.com/lindelwa122/image-slider#readme"
 }

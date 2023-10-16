@@ -1,6 +1,15 @@
 import './style/style.css';
 import { nanoid } from 'nanoid';
 
+/**
+ * Creates an image slider with the specified dimensions and images.
+ *
+ * @param {string} height - The height of the image slider container (e.g., '350px').
+ * @param {string} width - The width of the image slider container (e.g., '450px').
+ * @param {...Object} images - Image objects in the format { src: 'image_url', alt: 'image_description' }.
+ * @throws Will throw an error if image objects are not provided or if they don't have the src attribute.
+ * @returns {Object} An object with methods to manage the image slider.
+ */
 const imageSlider = (height, width, ...images) => {
   // Prevent selector from starting with a number
   const id = 'd' + nanoid();
@@ -58,7 +67,18 @@ const imageSlider = (height, width, ...images) => {
 
   const _image = () => {
     const img = document.createElement('img');
-    img.src = images[_current];
+
+    if (typeof images[_current] !== 'object' || !images[_current].src) {
+      throw new Error(
+        'images must contain objects and they must have the src attribute.',
+      );
+    }
+
+    if (images[_current].alt) {
+      img.alt = images[_current].alt;
+    }
+
+    img.src = images[_current].src;
     img.classList = `lin-img lin-img-style-${_configurations.imageFit}`;
     img.id = `${id}-limg`;
 
@@ -146,7 +166,18 @@ const imageSlider = (height, width, ...images) => {
 
   const _updateImg = () => {
     const img = document.querySelector(`#${id}-limg`);
-    img.src = images[_current];
+
+    if (typeof images[_current] !== 'object' || !images[_current].src) {
+      throw new Error(
+        'images must contain objects and they must have the src attribute.',
+      );
+    }
+
+    if (images[_current].alt) {
+      img.alt = images[_current].alt;
+    }
+
+    img.src = images[_current].src;
 
     if (_configurations.animation) {
       const keyframes = [{ opacity: 0.4 }, { opacity: 1 }];
@@ -217,13 +248,4 @@ const imageSlider = (height, width, ...images) => {
   return { append, auto, updateConfig };
 };
 
-const slider = imageSlider(
-  '350px',
-  '450px',
-  'https://images.unsplash.com/photo-1696937342199-10bc89eb956f',
-  'https://media-assets.wired.it/photos/62a6ede3caa182924b403d43/16:9/w_1280,c_limit/spider-man-no-way-home.jpg',
-  'https://i.ytimg.com/vi/E0Lj4kwLBbk/sddefault.jpg',
-);
-slider.auto(2000);
-slider.updateConfig({ showCounter: true, imageFit: 'contain' });
-slider.append('#root');
+export default imageSlider;
