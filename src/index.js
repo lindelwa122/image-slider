@@ -1,22 +1,22 @@
-import "./style/style.css";
-import { nanoid } from "nanoid";
+import './style/style.css';
+import { nanoid } from 'nanoid';
 
 const imageSlider = (height, width, ...images) => {
   // Prevent selector from starting with a number
-  const id = "d" + nanoid();
+  const id = 'd' + nanoid();
   let _current = 0;
 
   let _configurations = {
     animation: true,
     animationDuration: 500,
-    imageFit: "cover",
+    imageFit: 'cover',
     showCounter: true,
     showControls: true,
     showDots: true,
   };
 
   const _counter = () => {
-    const counter = document.createElement("div");
+    const counter = document.createElement('div');
     counter.className = `lin-slider-counter`;
     counter.id = `${id}-lsc`;
     counter.innerHTML = `${_current + 1} / ${images.length}`;
@@ -24,15 +24,15 @@ const imageSlider = (height, width, ...images) => {
   };
 
   const _currentImageTracker = () => {
-    const container = document.createElement("div");
-    container.className = "lin-tracker";
+    const container = document.createElement('div');
+    container.className = 'lin-tracker';
     container.style.width = width;
     container.id = `${id}-tracker`;
 
     for (let i = 0; i < images.length; i++) {
       if (i === 0) {
         const firstDot = _dot(i);
-        firstDot.classList.add("active");
+        firstDot.classList.add('active');
         container.appendChild(firstDot);
       } else {
         container.appendChild(_dot(i));
@@ -43,10 +43,10 @@ const imageSlider = (height, width, ...images) => {
   };
 
   const _dot = (count) => {
-    const dot = document.createElement("div");
+    const dot = document.createElement('div');
     dot.classList = `lin-dot ${id}-ld`;
     dot.dataset.count = count;
-    dot.addEventListener("click", () => {
+    dot.addEventListener('click', () => {
       _current = count;
       _update();
     });
@@ -54,7 +54,7 @@ const imageSlider = (height, width, ...images) => {
   };
 
   const _image = () => {
-    const img = document.createElement("img");
+    const img = document.createElement('img');
     img.src = images[_current];
     img.classList = `lin-img lin-img-style-${_configurations.imageFit}`;
     img.id = `${id}-limg`;
@@ -62,7 +62,7 @@ const imageSlider = (height, width, ...images) => {
   };
 
   const _init = () => {
-    const container = document.createElement("div");
+    const container = document.createElement('div');
 
     if (_configurations.showDots) {
       container.append(_slider(), _currentImageTracker());
@@ -84,19 +84,19 @@ const imageSlider = (height, width, ...images) => {
   };
 
   const _next = () => {
-    const next = document.createElement("div");
-    next.className = "lin-next";
-    next.innerHTML = "❯";
-    next.addEventListener("click", _moveForward);
+    const next = document.createElement('div');
+    next.className = 'lin-next';
+    next.innerHTML = '❯';
+    next.addEventListener('click', _moveForward);
     return next;
   };
 
   const _overlay = () => {
-    const overlay = document.createElement("div");
-    overlay.className = "lin-overlay";
+    const overlay = document.createElement('div');
+    overlay.className = 'lin-overlay';
 
-    const interactions = document.createElement("div");
-    interactions.className = "lin-interactions";
+    const interactions = document.createElement('div');
+    interactions.className = 'lin-interactions';
 
     interactions.append(_previous(), _next());
 
@@ -112,10 +112,10 @@ const imageSlider = (height, width, ...images) => {
   };
 
   const _previous = () => {
-    const prev = document.createElement("div");
-    prev.className = "lin-prev";
-    prev.innerHTML = "❮";
-    prev.addEventListener("click", _moveBack);
+    const prev = document.createElement('div');
+    prev.className = 'lin-prev';
+    prev.innerHTML = '❮';
+    prev.addEventListener('click', _moveBack);
     return prev;
   };
 
@@ -152,17 +152,17 @@ const imageSlider = (height, width, ...images) => {
 
   const _updateTracker = () => {
     const dots = document.querySelectorAll(`.${id}-ld`);
-    dots.forEach((dot) => dot.classList.remove("active"));
+    dots.forEach((dot) => dot.classList.remove('active'));
     for (const dot of dots) {
       if (+dot.dataset.count === _current) {
-        dot.classList.add("active");
+        dot.classList.add('active');
       }
     }
   };
 
   const _slider = () => {
-    const slider = document.createElement("div");
-    slider.className = "lin-image-slider";
+    const slider = document.createElement('div');
+    slider.className = 'lin-image-slider';
     slider.style.height = height;
     slider.style.width = width;
 
@@ -210,12 +210,12 @@ const imageSlider = (height, width, ...images) => {
 };
 
 const slider = imageSlider(
-  "350px",
-  "350px",
-  "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/ss_7be97aa12cfc0e8feccdbb95dac3de71480f2140.1920x1080.jpg",
-  "https://media-assets.wired.it/photos/62a6ede3caa182924b403d43/16:9/w_1280,c_limit/spider-man-no-way-home.jpg",
-  "https://i.ytimg.com/vi/E0Lj4kwLBbk/sddefault.jpg"
+  '350px',
+  '350px',
+  'https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/ss_7be97aa12cfc0e8feccdbb95dac3de71480f2140.1920x1080.jpg',
+  'https://media-assets.wired.it/photos/62a6ede3caa182924b403d43/16:9/w_1280,c_limit/spider-man-no-way-home.jpg',
+  'https://i.ytimg.com/vi/E0Lj4kwLBbk/sddefault.jpg',
 );
 // slider.auto(2000);
-slider.updateConfig({ showCounter: true, imageFit: "fill" });
-slider.append("#root");
+slider.updateConfig({ showCounter: true, imageFit: 'fill' });
+slider.append('#root');
