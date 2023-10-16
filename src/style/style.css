@@ -1,0 +1,107 @@
+.lin-image-slider {
+  background-color: #000;
+  position: relative;
+}
+
+.lin-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+}
+
+.lin-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.lin-dot:hover {
+  background-color: #717171;
+}
+
+.lin-tracker {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.lin-dot.active {
+  background-color: #717171;
+}
+
+.lin-slider-counter {
+  color: white;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lin-interactions {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 100%;
+}
+
+.lin-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade 1s ease forwards;
+}
+
+.lin-img-style-none {
+  object-fit: none;
+}
+
+.lin-img-style-contain {
+  object-fit: contain;
+}
+
+.lin-img-style-cover {
+  object-fit: cover;
+}
+
+.lin-img-style-fill {
+  object-fit: fill;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lin-prev,
+.lin-next {
+  padding: 16px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.6s ease;
+}
+
+.lin-prev:hover,
+.lin-next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lin-prev {
+  border-radius: 0 3px 3px 0;
+}
+
+.lin-next {
+  border-radius: 3px 0 0 3px;
+}
