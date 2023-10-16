@@ -6,7 +6,7 @@
 ![Dropdown Menu Preview](./src/images/image-carousel-preview.png)
 
 <div>
-    <a href="https://npm.runkit.com/%40lindelwa122%2Fimage-carousel">Try on RunKit</a>
+    <a href="https://npm.runkit.com/%40lindelwa122%2Fimage-slider">Try on RunKit</a>
     &middot;
     <a href="https://github.com/lindelwa122/image-slider/issues">Report Bugs</a>
     &middot;
