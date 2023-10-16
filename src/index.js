@@ -6,6 +6,9 @@ const imageSlider = (height, width, ...images) => {
   const id = 'd' + nanoid();
   let _current = 0;
 
+  height = !height && width ? width : height;
+  width = !width && height ? height : width;
+
   let _configurations = {
     animation: true,
     animationDuration: 500,
@@ -58,6 +61,11 @@ const imageSlider = (height, width, ...images) => {
     img.src = images[_current];
     img.classList = `lin-img lin-img-style-${_configurations.imageFit}`;
     img.id = `${id}-limg`;
+
+    if (height === width) {
+      img.style.aspectRatio = '1/1';
+    }
+
     return img;
   };
 
@@ -211,11 +219,11 @@ const imageSlider = (height, width, ...images) => {
 
 const slider = imageSlider(
   '350px',
-  '350px',
-  'https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/ss_7be97aa12cfc0e8feccdbb95dac3de71480f2140.1920x1080.jpg',
+  '450px',
+  'https://images.unsplash.com/photo-1696937342199-10bc89eb956f',
   'https://media-assets.wired.it/photos/62a6ede3caa182924b403d43/16:9/w_1280,c_limit/spider-man-no-way-home.jpg',
   'https://i.ytimg.com/vi/E0Lj4kwLBbk/sddefault.jpg',
 );
-// slider.auto(2000);
-slider.updateConfig({ showCounter: true, imageFit: 'fill' });
+slider.auto(2000);
+slider.updateConfig({ showCounter: true, imageFit: 'contain' });
 slider.append('#root');
