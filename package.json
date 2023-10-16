@@ -26,8 +26,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@dom-manipulation-library/dml": "^1.0.0",
-    "bootstrap-icons": "^1.11.1"
+    "@dom-manipulation-library/dml": "^1.0.0"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
