@@ -1,6 +1,6 @@
 {
   "name": "@lindelwa122/image-slider",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "A small JS library for creating image carousels.",
   "main": "index.js",
   "scripts": {
@@ -36,8 +36,10 @@
     "url": "git+https://github.com/lindelwa122/image-slider.git"
   },
   "keywords": [
-    "dropdown",
-    "menu"
+    "image",
+    "carousel",
+    "image carousel",
+    "slider"
   ],
   "bugs": {
     "url": "https://github.com/lindelwa122/image-slider/issues"
